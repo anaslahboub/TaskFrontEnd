@@ -1,0 +1,54 @@
+@use '../../../styles/mixins' as mixins;
+
+.auth-container {
+  @include mixins.flex-center;
+  min-height: 100vh;
+  padding: mixins.$spacing-xl;
+  background: mixins.$gray-50;
+}
+
+.auth-card {
+  @include mixins.card;
+  width: 100%;
+  max-width: 480px;
+  padding: mixins.$spacing-2xl;
+  background: mixins.$white;
+
+  .auth-header {
+    margin-bottom: mixins.$spacing-xl;
+    text-align: center;
+
+    h2 {
+      margin-bottom: mixins.$spacing-sm;
+    }
+  }
+
+  .auth-form {
+    margin-bottom: mixins.$spacing-xl;
+  }
+
+  .auth-footer {
+    margin-top: mixins.$spacing-lg;
+  }
+}
+
+.alert-error {
+  padding: mixins.$spacing-md;
+  background: rgba(mixins.$error-color, 0.1);
+  color: mixins.$error-color;
+  border-radius: mixins.$border-radius-md;
+  font-size: mixins.$font-size-sm;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+
+  .form-check-input {
+    margin-right: mixins.$spacing-sm;
+  }
+}
+
+.w-100 {
+  width: 100%;
+}

@@ -1,0 +1,67 @@
+@import '../../../styles/mixins';
+
+.auth-container {
+  @include flex-center;
+  min-height: 100vh;
+  padding: $spacing-xl;
+  background: $gray-50;
+}
+
+.auth-card {
+  @include card;
+  width: 100%;
+  max-width: 480px;
+  padding: $spacing-2xl;
+  background: $white;
+
+  .auth-header {
+    margin-bottom: $spacing-xl;
+    text-align: center;
+
+    h2 {
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  .auth-form {
+    margin-bottom: $spacing-xl;
+  }
+
+  .auth-footer {
+    margin-top: $spacing-lg;
+  }
+}
+
+.alert-error {
+  padding: $spacing-md;
+  background: rgba($error-color, 0.1);
+  color: $error-color;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+}
+
+.alert-success {
+  padding: $spacing-md;
+  background: rgba($success-color, 0.1);
+  color: $success-color;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+}
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+
+  .form-check-input {
+    margin-right: $spacing-sm;
+    margin-top: 0.25rem;
+  }
+
+  .form-check-label {
+    line-height: 1.4;
+  }
+}
+
+.w-100 {
+  width: 100%;
+}

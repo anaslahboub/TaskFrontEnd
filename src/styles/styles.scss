@@ -1,0 +1,399 @@
+// styles.scss - Global Styles
+@use 'variables' as vars;
+@use 'mixins' as mixins;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+// Reset and Base Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: vars.$font-primary;
+  font-size: vars.$font-size-base;
+  line-height: 1.6;
+  color: vars.$gray-800;
+  background: vars.$gray-50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography Classes
+.text-heading-1 {
+  @include mixins.text-heading-1;
+}
+
+.text-heading-2 {
+  @include mixins.text-heading-2;
+}
+
+.text-heading-3 {
+  @include mixins.text-heading-3;
+}
+
+.text-body {
+  @include mixins.text-body;
+}
+
+.text-small {
+  @include mixins.text-small;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: vars.$primary-color;
+}
+
+.text-accent {
+  color: vars.$accent-color;
+}
+
+.text-success {
+  color: vars.$success-color;
+}
+
+.text-warning {
+  color: vars.$warning-color;
+}
+
+.text-error {
+  color: vars.$error-color;
+}
+
+// Button Classes
+.btn {
+  @include mixins.button-md;
+  
+  &.btn-primary {
+    @include mixins.button-primary;
+  }
+  
+  &.btn-secondary {
+    @include mixins.button-secondary;
+  }
+  
+  &.btn-ghost {
+    @include mixins.button-ghost;
+  }
+  
+  &.btn-sm {
+    @include mixins.button-sm;
+  }
+  
+  &.btn-lg {
+    @include mixins.button-lg;
+  }
+}
+
+// Form Classes
+.form-group {
+  margin-bottom: vars.$spacing-lg;
+  
+  label {
+    display: block;
+    margin-bottom: vars.$spacing-sm;
+    font-weight: vars.$font-weight-medium;
+    color: vars.$gray-700;
+  }
+  
+  .form-control {
+    @include mixins.input-base;
+  }
+  
+  .form-error {
+    margin-top: vars.$spacing-xs;
+    font-size: vars.$font-size-sm;
+    color: vars.$error-color;
+  }
+  
+  .form-help {
+    margin-top: vars.$spacing-xs;
+    font-size: vars.$font-size-sm;
+    color: vars.$gray-500;
+  }
+}
+
+// Card Classes
+.card {
+  @include mixins.card;
+  
+  &.card-hover {
+    @include mixins.card-hover;
+  }
+  
+  .card-header {
+    padding: vars.$spacing-lg;
+    border-bottom: 1px solid vars.$gray-200;
+    
+    .card-title {
+      @include mixins.text-heading-3;
+      margin: 0;
+    }
+  }
+  
+  .card-body {
+    padding: vars.$spacing-lg;
+  }
+  
+  .card-footer {
+    padding: vars.$spacing-lg;
+    border-top: 1px solid vars.$gray-200;
+    background: vars.$gray-50;
+  }
+}
+
+// Container Classes
+.container {
+  @include mixins.container;
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 vars.$spacing-md;
+  
+  @include mixins.tablet-up {
+    padding: 0 vars.$spacing-lg;
+  }
+}
+
+// Layout Utilities
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Spacing Utilities
+.m-0 { margin: 0; }
+.m-1 { margin: vars.$spacing-sm; }
+.m-2 { margin: vars.$spacing-md; }
+.m-3 { margin: vars.$spacing-lg; }
+.m-4 { margin: vars.$spacing-xl; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: vars.$spacing-sm; }
+.mt-2 { margin-top: vars.$spacing-md; }
+.mt-3 { margin-top: vars.$spacing-lg; }
+.mt-4 { margin-top: vars.$spacing-xl; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: vars.$spacing-sm; }
+.mb-2 { margin-bottom: vars.$spacing-md; }
+.mb-3 { margin-bottom: vars.$spacing-lg; }
+.mb-4 { margin-bottom: vars.$spacing-xl; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: vars.$spacing-sm; }
+.p-2 { padding: vars.$spacing-md; }
+.p-3 { padding: vars.$spacing-lg; }
+.p-4 { padding: vars.$spacing-xl; }
+
+.pt-0 { padding-top: 0; }
+.pt-1 { padding-top: vars.$spacing-sm; }
+.pt-2 { padding-top: vars.$spacing-md; }
+.pt-3 { padding-top: vars.$spacing-lg; }
+.pt-4 { padding-top: vars.$spacing-xl; }
+
+.pb-0 { padding-bottom: 0; }
+.pb-1 { padding-bottom: vars.$spacing-sm; }
+.pb-2 { padding-bottom: vars.$spacing-md; }
+.pb-3 { padding-bottom: vars.$spacing-lg; }
+.pb-4 { padding-bottom: vars.$spacing-xl; }
+
+// Loading Animation
+.loading-spinner {
+  @include mixins.loading-spinner;
+}
+
+// Animation Classes
+.fade-in {
+  @include mixins.fade-in;
+}
+
+.slide-up {
+  @include mixins.slide-up;
+}
+
+// Background Utilities
+.bg-primary {
+  @include mixins.gradient-primary;
+}
+
+.bg-accent {
+  @include mixins.gradient-accent;
+}
+
+.bg-hero {
+  @include mixins.gradient-hero;
+}
+
+.bg-white {
+  background: vars.$white;
+}
+
+.bg-gray-50 {
+  background: vars.$gray-50;
+}
+
+.bg-gray-100 {
+  background: vars.$gray-100;
+}
+
+// Border Radius Utilities
+.rounded-sm {
+  border-radius: vars.$border-radius-sm;
+}
+
+.rounded {
+  border-radius: vars.$border-radius-md;
+}
+
+.rounded-lg {
+  border-radius: vars.$border-radius-lg;
+}
+
+.rounded-xl {
+  border-radius: vars.$border-radius-xl;
+}
+
+.rounded-full {
+  border-radius: vars.$border-radius-full;
+}
+
+// Shadow Utilities
+.shadow-sm {
+  box-shadow: vars.$shadow-sm;
+}
+
+.shadow {
+  box-shadow: vars.$shadow-md;
+}
+
+.shadow-lg {
+  box-shadow: vars.$shadow-lg;
+}
+
+.shadow-xl {
+  box-shadow: vars.$shadow-xl;
+}
+
+// Responsive utilities
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+@include mixins.mobile-only {
+  .d-md-none {
+    display: none;
+  }
+  
+  .d-md-block {
+    display: block;
+  }
+}
+
+@include mixins.tablet-up {
+  .d-md-none {
+    display: none;
+  }
+  
+  .d-md-block {
+    display: block;
+  }
+  
+  .d-md-flex {
+    display: flex;
+  }
+}
+
+@include mixins.desktop-up {
+  .d-lg-none {
+    display: none;
+  }
+  
+  .d-lg-block {
+    display: block;
+  }
+  
+  .d-lg-flex {
+    display: flex;
+  }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: vars.$gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background: vars.$gray-300;
+  border-radius: vars.$border-radius-full;
+  
+  &:hover {
+    background: vars.$gray-400;
+  }
+}

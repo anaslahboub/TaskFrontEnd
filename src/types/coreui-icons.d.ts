@@ -1,0 +1,20 @@
+declare module '@coreui/icons' {
+  export const cilSpeedometer: any;
+  export const cilDrop: any;
+  export const cilPencil: any;
+  export const cilSun: any;
+  export const cilMoon: any;
+  export const cilContrast: any;
+  export const cilBell: any;
+  export const cilEnvelopeOpen: any;
+  export const cilTask: any;
+  export const cilCommentSquare: any;
+  export const cilUser: any;
+  export const cilSettings: any;
+  export const cilCreditCard: any;
+  export const cilFile: any;
+  export const cilLockLocked: any;
+  export const cilAccountLogout: any;
+  export const cilMenu: any;
+  export const cilList: any;
+} 

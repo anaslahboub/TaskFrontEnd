@@ -1,12 +1,36 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+  withHashLocation,
+  withInMemoryScrolling,
+  withRouterConfig,
+  withViewTransitions
+} from '@angular/router';
+import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 
+import { DropdownModule, SidebarModule } from '@coreui/angular';
+import { IconSetService } from '@coreui/icons-angular';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection(),
-    provideRouter(routes)
+    provideRouter(routes,
+      withRouterConfig({
+        onSameUrlNavigation: 'reload'
+      }),
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'top',
+        anchorScrolling: 'enabled'
+      }),
+      withEnabledBlockingInitialNavigation(),
+      withViewTransitions(),
+      withHashLocation()
+    ),
+    importProvidersFrom(SidebarModule, DropdownModule, KeycloakAngularModule),
+    IconSetService,
+    KeycloakService,
+    provideAnimationsAsync()
   ]
 };

@@ -1,0 +1,147 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Welcome to TaskApp</h1>
+      <p>Please authenticate to continue</p>
+    </div>
+
+    <div class="login-content">
+      <!-- Loading State -->
+      <div *ngIf="isLoading" class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+
+      <!-- Login Form -->
+      <div *ngIf="!isAuthenticated && !isLoading" class="login-form">
+        <!-- Debug/Verification Section -->
+        <div class="debug-section" style="margin-bottom: 20px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+          <h5>🔍 Authentication Debug</h5>
+          <button 
+            type="button" 
+            class="btn btn-info btn-sm me-2" 
+            (click)="checkAuthStatus()">
+            Check Auth Status
+          </button>
+          <button 
+            type="button" 
+            class="btn btn-warning btn-sm me-2" 
+            (click)="verifyLogin()">
+            Verify Login
+          </button>
+          <button 
+            type="button" 
+            class="btn btn-success btn-sm" 
+            (click)="testAuthentication()">
+            Test Keycloak
+          </button>
+          <p class="mt-2 mb-0" style="font-size: 12px; color: #666;">
+            Use these buttons to check authentication status and verify login functionality
+          </p>
+        </div>
+
+        <!-- Social Login Buttons -->
+        <div class="social-login">
+          <h4>Login with</h4>
+          <div class="social-buttons">
+            <button 
+              type="button" 
+              class="btn btn-social btn-google" 
+              (click)="loginWithGoogle()"
+              [disabled]="isLoading">
+              <i class="fab fa-google"></i>
+              <span>Google</span>
+            </button>
+            <button 
+              type="button" 
+              class="btn btn-social btn-github" 
+              (click)="loginWithGitHub()"
+              [disabled]="isLoading">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider">
+          <span>or</span>
+        </div>
+
+        <!-- Keycloak Login -->
+        <div class="form-group">
+          <button 
+            type="button" 
+            class="btn btn-primary btn-lg w-100" 
+            (click)="login()"
+            [disabled]="isLoading">
+            <i class="fas fa-sign-in-alt me-2"></i>
+            Login with Keycloak
+          </button>
+        </div>
+
+        <!-- Forgot Password Link -->
+        <div class="forgot-password-link">
+          <a routerLink="/forgot-password" class="btn-link">
+            <i class="fas fa-key me-1"></i>
+            Forgot your password?
+          </a>
+        </div>
+      </div>
+
+      <!-- User Information (when authenticated) -->
+      <div *ngIf="isAuthenticated && userProfile" class="user-info">
+        <div class="user-profile">
+          <div class="avatar">
+            <div class="avatar-placeholder">
+              {{ (userProfile.firstName ? userProfile.firstName.charAt(0) : '') || (userProfile.username ? userProfile.username.charAt(0) : '') || 'U' }}
+            </div>
+          </div>
+          
+          <div class="user-details">
+            <h3>{{ userProfile.firstName }} {{ userProfile.lastName }}</h3>
+            <p class="username">{{ userProfile.username }}</p>
+            <p *ngIf="userProfile.email" class="email">{{ userProfile.email }}</p>
+          </div>
+        </div>
+
+        <!-- User Roles -->
+        <div *ngIf="userRoles.length > 0" class="user-roles">
+          <h4>Roles:</h4>
+          <div class="role-tags">
+            <span *ngFor="let role of userRoles" class="role-tag">{{ role }}</span>
+          </div>
+        </div>
+
+        <!-- Token Information -->
+        <div class="token-info">
+          <h4>Token Information:</h4>
+          <div *ngIf="getTokenInfo() as tokenInfo" class="token-details">
+            <p><strong>Subject:</strong> {{ tokenInfo.sub }}</p>
+            <p><strong>Issued At:</strong> {{ tokenInfo.iat | date:'medium' }}</p>
+            <p><strong>Expires At:</strong> {{ tokenInfo.exp | date:'medium' }}</p>
+            <p><strong>Name:</strong> {{ tokenInfo.name || 'N/A' }}</p>
+            <p><strong>Email:</strong> {{ tokenInfo.email || 'N/A' }}</p>
+          </div>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="logout-section">
+          <button 
+            type="button" 
+            class="btn btn-outline-danger" 
+            (click)="logout()"
+            [disabled]="isLoading">
+            <i class="fas fa-sign-out-alt me-2"></i>
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

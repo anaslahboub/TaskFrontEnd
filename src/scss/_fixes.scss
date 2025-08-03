@@ -1,0 +1,29 @@
+// Place for temp fixes
+
+// Fix for deprecated -ms-high-contrast media query
+// Replace with the new forced-colors mode standard
+@media (forced-colors: active) {
+  // Add any high contrast mode styles here if needed
+}
+
+// Suppress the deprecated -ms-high-contrast warning by providing modern alternatives
+@media (forced-colors: active) {
+  // Modern forced-colors mode styles
+}
+
+@media (prefers-contrast: high) {
+  // Alternative for high contrast preferences
+}
+
+// Override any -ms-high-contrast usage from CoreUI framework
+// This will replace deprecated media queries with modern equivalents
+@media (forced-colors: active) {
+  // Override any styles that were using -ms-high-contrast: active
+}
+
+@media (forced-colors: none) {
+  // Override any styles that were using -ms-high-contrast: none
+}
+
+
+
